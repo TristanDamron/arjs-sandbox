@@ -1,7 +1,7 @@
 <!doctype HTML>
 <html>
 <script src="https://aframe.io/releases/0.6.1/aframe.min.js"></script>
-<script src="https://cdn.rawgit.com/jeromeetienne/AR.js/1.5.0/aframe/build/aframe-ar.js"> </script>
+<script src="https://cdn.rawgit.com/jeromeetienne/AR.js/1.5.5/aframe/build/aframe-ar.js"> </script>
 <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 <script>
     $(document).ready(() => {
@@ -21,8 +21,8 @@
     });
 </script>
   <body style='margin : 0px; overflow: hidden;'>
-    <a-scene embedded arjs>
-        <a-marker preset="pattern" type='pattern' url='https://raw.githubusercontent.com/TristanDamron/arjs-sandbox/master/patterns/one.patt'>
+    <a-scene embedded arjs='debugUIEnabled: false; detectionMode: mono_and_matrix; matrixCodeType: 3x3;'>
+        <a-marker preset='custom' type='pattern' url='https://raw.githubusercontent.com/TristanDamron/arjs-sandbox/master/patterns/one.patt'>
             <!-- 2^0 -->
             <a-box id="light" position='-0.2 0.5 0' height="0.25" width="0.25" depth="0.25" material='color: white;'></a-box>
             <a-entity position='-0.2 0.5 0.25' rotation="-90 0 0" text="value: 1; color: red; align: center; width: 4;"></a-entity>
