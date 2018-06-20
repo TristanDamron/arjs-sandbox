@@ -22,14 +22,14 @@
 </script>
   <body style='margin : 0px; overflow: hidden;'>
     <a-scene embedded arjs>
-        <a-marker-camera preset='custom' type='pattern' url='patterns/one.patt'>
+        <a-marker preset="pattern" type='pattern' url='https://raw.githubusercontent.com/TristanDamron/arjs-sandbox/master/patterns/one.patt'>
             <!-- 2^0 -->
             <a-box id="light" position='-0.2 0.5 0' height="0.25" width="0.25" depth="0.25" material='color: white;'></a-box>
             <a-entity position='-0.2 0.5 0.25' rotation="-90 0 0" text="value: 1; color: red; align: center; width: 4;"></a-entity>
             <!-- 2^1 -->
             <a-box position='0.2 0.5 0' height="0.25" width="0.25" depth="0.25" material='color: black;'></a-box>
             <a-entity position='0.2 0.5 0.25' rotation="-90 0 0" text="value: 2; color: red; align: center; width: 4;"></a-entity>
-        </a-marker-camera>
+        </a-marker>
         <a-entity camera></a-entity>
     </a-scene>
   </body>
