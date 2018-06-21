@@ -1,35 +1,9 @@
 <!doctype HTML>
 <html>
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <script src="https://aframe.io/releases/0.6.1/aframe.min.js"></script>
 <script src="https://cdn.rawgit.com/jeromeetienne/AR.js/1.5.5/aframe/build/aframe-ar.js"> </script>
 <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-<script>
-    $(document).ready(() => {
-        var x = 0;
-        var y = 0;
-        var z = 0;
-
-        var speed = 10;
-
-        function rotate() {
-            y += speed;
-            let val = x + " " + y + " " + z;
-            $('.light').each((i, e) => {
-                $(e).attr("rotation", val);                
-            });
-        }
-
-        setInterval(rotate, 10);
-
-        $('.info').click(() => {
-            if ($('.dropdown').css('visibility') == 'hidden') {
-                $('.dropdown').css('visibility', 'visible')
-            } else {
-                $('.dropdown').css('visibility', 'hidden')
-            }
-        });
-    });
-</script>
 <style>
     body {
         font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
@@ -98,67 +72,75 @@
     .dropdown a {
         color: darkcyan;
     }
+
+    .welcome {
+        left: 0;
+        width: 90%;
+        position: absolute;
+        height: 100%;
+        padding-left: 5vw;
+        color: darkslategrey;        
+    }
+
+    .welcome h1 {
+        font-size: 10vw;
+        display: inline-block;
+    }
+
+    .welcome p {        
+        left: 0;
+        font-size: 100%;
+    }
+
+    .logo {
+        display: inline-block;
+    }  
+    
+    @media screen and (max-width: 601px) {
+        .logo {
+            display: block;
+            width: 80%;
+            top: 50%;
+            position: absolute;
+        }
+    }      
+
+    .navigation {
+        width: 20%;
+        position: absolute;
+        height: 85%;
+        background-color: darkslategrey;
+        color: white;
+        right: 0;
+    }
 </style>
-  <body style='margin : 0px; overflow: hidden;'>
-    <a-scene embedded arjs='debugUIEnabled: false; detectionMode: mono_and_matrix; matrixCodeType: 3x3;'>
-        <a-marker preset='custom' type='pattern' url='https://raw.githubusercontent.com/TristanDamron/arjs-sandbox/master/patterns/one.patt'>
-            <!-- 2^1 -->
-            <a-box position='-0.2 0.5 0' height="0.25" width="0.25" depth="0.25" material='color: grey;'></a-box>
-            <a-entity position='-0.2 0.5 0.25' rotation="-90 0 0" text="value: 2; color: red; align: center; width: 4;"></a-entity>
-            <!-- 2^0 -->
-            <a-box class="light" position='0.2 0.5 0' height="0.25" width="0.25" depth="0.25" material='color: white;'></a-box>
-            <a-entity position='0.2 0.5 0.25' rotation="-90 0 0" text="value: 1; color: red; align: center; width: 4;"></a-entity>
-        </a-marker>
-
-        <a-marker preset='custom' type='pattern' url='https://raw.githubusercontent.com/TristanDamron/arjs-sandbox/master/patterns/two.patt'>
-            <!-- 2^1 -->
-            <a-box class="light" position='-0.2 0.5 0' height="0.25" width="0.25" depth="0.25" material='color: white;'></a-box>
-            <a-entity position='-0.2 0.5 0.25' rotation="-90 0 0" text="value: 2; color: red; align: center; width: 4;"></a-entity>
-            <!-- 2^0 -->
-            <a-box position='0.2 0.5 0' height="0.25" width="0.25" depth="0.25" material='color: grey;'></a-box>
-            <a-entity position='0.2 0.5 0.25' rotation="-90 0 0" text="value: 1; color: red; align: center; width: 4;"></a-entity>
-        </a-marker>
-
-        <a-marker preset='custom' type='pattern' url='https://raw.githubusercontent.com/TristanDamron/arjs-sandbox/master/patterns/three.patt'>
-            <!-- 2^1 -->
-            <a-box class="light" position='-0.2 0.5 0' height="0.25" width="0.25" depth="0.25" material='color: white;'></a-box>
-            <a-entity position='-0.2 0.5 0.25' rotation="-90 0 0" text="value: 2; color: red; align: center; width: 4;"></a-entity>
-            <!-- 2^0 -->
-            <a-box class="light" position='0.2 0.5 0' height="0.25" width="0.25" depth="0.25" material='color: white;'></a-box>
-            <a-entity position='0.2 0.5 0.25' rotation="-90 0 0" text="value: 1; color: red; align: center; width: 4;"></a-entity>
-        </a-marker>        
-
-        <a-entity camera></a-entity>
-    </a-scene>
-    <div class="info">
-        <center>
-            <i>i</i>
-        </center>
-        <div class="dropdown">
-            <center>Download the markers here!
-            <ul>
-                <li>
-                    <a href="./downloads/Markers-png.zip" download>Markers.zip (png)</a>
-                </li>
-                <li>
-                    <a href="./downloads/Markers-pdf.zip" download>Markers.zip (pdf)</a>
-                </li>                
-            </ul>
-            <i>Thanks for visiting!</i>            
-            </center>
-        </div>
-    </div>       
-
+  <body style='margin : 0px; overflow: hidden;'>    
+    <div class="welcome">
+        <img class="logo" width="10%" src="img/logo.png"/>        
+        <h1>                      
+            AR Sandbox
+        </h1>
+        <br>
+        <p>Please click any of the links on the bottom panel to start a demo.</p>        
+        <br><br>
+        <p>
+            <i>Note: While these demos are meant to be cross-platform, due to limitations with some of the AR frameworks it is recommended that you use a phone running Safari (iOS) or Chrome (Android)</i>
+        </p>
+    </div>
     <footer>
         <center>
             <p>
-                <b>AR Sandbox by Tristan Damron</b>
+                <b>Created by Tristan Damron</b>
                 <br>
                 <i>TristanDamron31@gmail.com</i>
             </p>           
         </center>
         <center>
             <p>
+                <button onclick="window.location.href='/binary'">
+                    <b>Binary Numbers</b>
+                </button>                    
+
                 <button onclick="window.location.href='https://github.com/TristanDamron/arjs-sandbox'">
                     <b>Source Code</b>
                 </button>                    

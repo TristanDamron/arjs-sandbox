@@ -7,4 +7,10 @@ app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname + '/index.html'));
 });
 
+app.get('/binary', (req, res) => {
+    res.sendFile(path.join(__dirname + '/binary.html'));
+});
+
+app.use(express.static('public'));
+
 app.listen(port);

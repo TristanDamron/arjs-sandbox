@@ -1,0 +1,169 @@
+<!doctype HTML>
+<html>
+<script src="https://aframe.io/releases/0.6.1/aframe.min.js"></script>
+<script src="https://cdn.rawgit.com/jeromeetienne/AR.js/1.5.5/aframe/build/aframe-ar.js"> </script>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script>
+    $(document).ready(() => {
+        var x = 0;
+        var y = 0;
+        var z = 0;
+
+        var speed = 10;
+
+        function rotate() {
+            y += speed;
+            let val = x + " " + y + " " + z;
+            $('.light').each((i, e) => {
+                $(e).attr("rotation", val);                
+            });
+        }
+
+        setInterval(rotate, 10);
+
+        $('.info').click(() => {
+            if ($('.dropdown').css('visibility') == 'hidden') {
+                $('.dropdown').css('visibility', 'visible')
+            } else {
+                $('.dropdown').css('visibility', 'hidden')
+            }
+        });
+    });
+</script>
+<style>
+    body {
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    }
+
+    footer {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        height: 15%;
+        background-color: #f433e1;
+        color: white;
+        opacity: 0.75;
+    }
+
+    p {
+        padding-top: 10px;
+        display: inline;
+    }
+
+    a {
+        color: white;
+        padding-right: 50px;
+    }
+
+    a:visited {
+        color: white;
+    }
+
+    button {
+        border-style: none;
+        background-color: yellowgreen;
+        color: white;
+        height: 25px;
+        margin-top: 5px;
+    }
+
+    .info {
+        border-radius: 100%;        
+        height: 50px;
+        width: 50px;
+        background-color: lightcyan;
+        position: absolute;
+        top: 5px;
+        right: 25px;
+        font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; 
+        font-size: 40px;
+        color: white;
+        opacity: 0.75;
+    }
+
+    .dropdown {
+        margin-top: 10px;
+        visibility: hidden;   
+        background-color: white;     
+        color: darkslategrey;
+        position: absolute;
+        width: 250px;
+        font-size: 16px;
+        left: -200px;
+        border-radius: 2%;
+        padding-top: 5px;
+        padding-bottom: 5px;
+    }
+
+    .dropdown a {
+        color: darkcyan;
+    }
+</style>
+  <body style='margin : 0px; overflow: hidden;'>
+    <a-scene embedded arjs='debugUIEnabled: false; detectionMode: mono_and_matrix; matrixCodeType: 3x3;'>
+        <a-marker preset='custom' type='pattern' url='https://raw.githubusercontent.com/TristanDamron/arjs-sandbox/master/patterns/one.patt'>
+            <!-- 2^1 -->
+            <a-box position='-0.2 0.5 0' height="0.25" width="0.25" depth="0.25" material='color: grey;'></a-box>
+            <a-entity position='-0.2 0.5 0.25' rotation="-90 0 0" text="value: 2; color: red; align: center; width: 4;"></a-entity>
+            <!-- 2^0 -->
+            <a-box class="light" position='0.2 0.5 0' height="0.25" width="0.25" depth="0.25" material='color: white;'></a-box>
+            <a-entity position='0.2 0.5 0.25' rotation="-90 0 0" text="value: 1; color: red; align: center; width: 4;"></a-entity>
+        </a-marker>
+
+        <a-marker preset='custom' type='pattern' url='https://raw.githubusercontent.com/TristanDamron/arjs-sandbox/master/patterns/two.patt'>
+            <!-- 2^1 -->
+            <a-box class="light" position='-0.2 0.5 0' height="0.25" width="0.25" depth="0.25" material='color: white;'></a-box>
+            <a-entity position='-0.2 0.5 0.25' rotation="-90 0 0" text="value: 2; color: red; align: center; width: 4;"></a-entity>
+            <!-- 2^0 -->
+            <a-box position='0.2 0.5 0' height="0.25" width="0.25" depth="0.25" material='color: grey;'></a-box>
+            <a-entity position='0.2 0.5 0.25' rotation="-90 0 0" text="value: 1; color: red; align: center; width: 4;"></a-entity>
+        </a-marker>
+
+        <a-marker preset='custom' type='pattern' url='https://raw.githubusercontent.com/TristanDamron/arjs-sandbox/master/patterns/three.patt'>
+            <!-- 2^1 -->
+            <a-box class="light" position='-0.2 0.5 0' height="0.25" width="0.25" depth="0.25" material='color: white;'></a-box>
+            <a-entity position='-0.2 0.5 0.25' rotation="-90 0 0" text="value: 2; color: red; align: center; width: 4;"></a-entity>
+            <!-- 2^0 -->
+            <a-box class="light" position='0.2 0.5 0' height="0.25" width="0.25" depth="0.25" material='color: white;'></a-box>
+            <a-entity position='0.2 0.5 0.25' rotation="-90 0 0" text="value: 1; color: red; align: center; width: 4;"></a-entity>
+        </a-marker>        
+
+        <a-entity camera></a-entity>
+    </a-scene>
+    <div class="info">
+        <center>
+            <i>i</i>
+        </center>
+        <div class="dropdown">
+            <center>Download the markers here!
+            <ul>
+                <li>
+                    <a href="./downloads/Markers-png.zip" download>Markers.zip (png)</a>
+                </li>
+                <li>
+                    <a href="./downloads/Markers-pdf.zip" download>Markers.zip (pdf)</a>
+                </li>                
+            </ul>
+            <i>Thanks for visiting!</i>            
+            </center>
+        </div>
+    </div>       
+
+    <footer>
+        <center>
+            <p>
+                <b>AR Sandbox by Tristan Damron</b>
+                <br>
+                <i>TristanDamron31@gmail.com</i>
+            </p>           
+        </center>
+        <center>
+            <p>
+                <button onclick="window.location.href='https://github.com/TristanDamron/arjs-sandbox'">
+                    <b>Source Code</b>
+                </button>                    
+            </p>         
+        </center>
+    </footer>
+  </body>
+</html>
